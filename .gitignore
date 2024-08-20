@@ -1,0 +1,45 @@
+# Файлы и папки, сгенерированные при сборке
+/build/
+/bin/
+/obj/
+/out/
+
+# Исполняемые файлы
+*.exe
+*.out
+*.app
+*.o
+*.a
+*.so
+*.dll
+*.dylib
+
+# Временные файлы
+*.log
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+
+# Файлы IDE и редакторов
+*.vscode/
+.idea/
+*.code-workspace
+*.DS_Store
+*.vscode/
+.vscode/
+
+# Файлы, связанные с системами сборки
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# Папки и файлы, связанные с Xcode
+*.xcworkspace
+*.xcproj
+*.xcuserstate
+*.xcuserdatad
+*.xcscheme
+*.xcdebugger/

@@ -52,6 +52,22 @@ g++ -std=c++17 -o cleaner main.cpp wxApp.cpp cleaner.cpp `wx-config --cxxflags -
 ./cleaner
 ```
 
+## Использование Makefile
+### Пример Makefile предоставляется в файле Makefile.example. Чтобы использовать его:
+1. Скопируйте файл Makefile.example в Makefile:
+```bash
+cp Makefile.example Makefile
+```
+2. Настройте Makefile, если необходимо (например, обновите пути или флаги).
+Выполните сборку:
+```bash
+make
+```
+Запустите скомпилированное приложение:
+```bash
+./build/cleaner
+```
+
 ## Что уже реализовано
 
 - **Очистка временных файлов:** Программа удаляет временные файлы и кеши как на Windows, так и на macOS.

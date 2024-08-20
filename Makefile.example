@@ -1,0 +1,34 @@
+# Пример Makefile для Temporary Files Cleaner
+
+# Установите компилятор и флаги
+CXX = clang++
+CXXFLAGS = -std=c++17 -arch arm64
+WX_CXXFLAGS := $(shell wx-config --cxxflags)
+WX_LIBS := $(shell wx-config --libs)
+BUILD_DIR = build
+
+# Цель по умолчанию
+all: $(BUILD_DIR)/cleaner
+
+# Создание исполняемого файла
+$(BUILD_DIR)/cleaner: $(BUILD_DIR)/main.o $(BUILD_DIR)/wxApp.o $(BUILD_DIR)/cleaner.o
+	$(CXX) $(CXXFLAGS) -o $(BUILD_DIR)/cleaner $(BUILD_DIR)/main.o $(BUILD_DIR)/wxApp.o $(BUILD_DIR)/cleaner.o $(WX_LIBS)
+
+# Компиляция main.cpp
+$(BUILD_DIR)/main.o: main.cpp
+	$(CXX) $(CXXFLAGS) -c main.cpp -o $(BUILD_DIR)/main.o $(WX_CXXFLAGS)
+
+# Компиляция wxApp.cpp
+$(BUILD_DIR)/wxApp.o: wxApp.cpp wxApp.h
+	$(CXX) $(CXXFLAGS) -c wxApp.cpp -o $(BUILD_DIR)/wxApp.o $(WX_CXXFLAGS)
+
+# Компиляция cleaner.cpp
+$(BUILD_DIR)/cleaner.o: cleaner.cpp cleaner.h
+	$(CXX) $(CXXFLAGS) -c cleaner.cpp -o $(BUILD_DIR)/cleaner.o $(WX_CXXFLAGS)
+
+# Очистка сборки
+clean:
+	rm -rf $(BUILD_DIR)/*.o $(BUILD_DIR)/cleaner
+
+# Создание директории build, если она не существует
+$(shell mkdir -p $(BUILD_DIR))
